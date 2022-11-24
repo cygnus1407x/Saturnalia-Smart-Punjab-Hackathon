@@ -11,7 +11,7 @@
 #define del 5000
 
 int ini;
-int timee;
+int tim;
 void setup()
 {
   pinMode(R1, OUTPUT);
@@ -27,24 +27,22 @@ void setup()
 
   Serial.begin(9600);
 
-  digitalWrite(trig,LOW);
-  delay(100);
+  /*digitalWrite(trig,LOW);
+  delay(20);
   digitalWrite(trig,HIGH);
-  delay(100);
+  delay(1000);
   digitalWrite(trig,LOW);
-  
-  
-  timee=pulseIn(ech,HIGH);
-  ini=timee*0.034/2;
-  // int ini=2900;
-  Serial.println("INITIAL: ");
-  Serial.print(ini);
- }
+  tim=pulseIn(ech,HIGH);
+  ini= tim * 0.034/2;
+ Serial.println("INITIAL: ");
+ Serial.print(ini);*/
+}
 
 int ser;
 
 void loop()
 {
+  ini= ;
   int dist;
   long time;
  
@@ -89,15 +87,61 @@ void loop()
     digitalWrite(R1,HIGH);
     digitalWrite(R3,HIGH);
     digitalWrite(R4,HIGH);
-    delay(del+5000);
+    digitalWrite(trig, LOW);
+   delay(100);
+   digitalWrite(trig, HIGH);
+   delay(100);
+   digitalWrite(trig, LOW);
+
+   time=pulseIn(ech,HIGH);
+   dist= time *0.034/2;
+
+   Serial.println("DISTANCE: ");
+
+   Serial.print(dist);
+   Serial.print("\n");
+
+    if (dist<ini-50)
+    {
+      digitalWrite(R2, HIGH);
+      digitalWrite(G2, LOW);
+      delay(5000);
+      digitalWrite(R2,LOW);
+    }else {
+      digitalWrite(R2,LOW);
+      digitalWrite(G2,HIGH);
+    }
     break;
 
     case 3:
     digitalWrite(G3, HIGH);
     digitalWrite(R2,HIGH);
-    digitalWrite(R3,HIGH);
+    digitalWrite(R1,HIGH);
     digitalWrite(R4,HIGH);
-    delay(del+5000);
+    digitalWrite(trig, LOW);
+   delay(100);
+   digitalWrite(trig, HIGH);
+   delay(100);
+   digitalWrite(trig, LOW);
+
+   time=pulseIn(ech,HIGH);
+   dist= time *0.034/2;
+
+   Serial.println("DISTANCE: ");
+
+   Serial.print(dist);
+   Serial.print("\n");
+
+    if (dist<ini-50)
+    {
+      digitalWrite(R3, HIGH);
+      digitalWrite(G3, LOW);
+      delay(5000);
+      digitalWrite(R3,LOW);
+    }else {
+      digitalWrite(R3,LOW);
+      digitalWrite(G3,HIGH);
+    }
     break;
 
     case 4:
@@ -105,7 +149,30 @@ void loop()
     digitalWrite(R2,HIGH);
     digitalWrite(R3,HIGH);
     digitalWrite(R1,HIGH);
-    delay(del+5000);
+    digitalWrite(trig, LOW);
+   delay(100);
+   digitalWrite(trig, HIGH);
+   delay(100);
+   digitalWrite(trig, LOW);
+
+   time=pulseIn(ech,HIGH);
+   dist= time *0.034/2;
+
+   Serial.println("DISTANCE: ");
+
+   Serial.print(dist);
+   Serial.print("\n");
+
+    if (dist<ini-50)
+    {
+      digitalWrite(R4, HIGH);
+      digitalWrite(G4, LOW);
+      delay(5000);
+      digitalWrite(R4,LOW);
+    }else {
+      digitalWrite(R4,LOW);
+      digitalWrite(G4,HIGH);
+    }
     break;
     }  
    
