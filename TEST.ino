@@ -47,8 +47,9 @@ void loop()
   long time;
  
    
-  ser=1;
-
+  if (Serial.available())
+  {
+    ser=Serial.read();
   switch(ser)
   {
     case 1:
@@ -175,5 +176,5 @@ void loop()
     }
     break;
     }  
-   
+  }
 }
