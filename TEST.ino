@@ -38,21 +38,21 @@ void setup()
  Serial.print(ini);*/
 }
 
-int ser;
+char ser = 0;
 
 void loop()
 {
-  ini= ;
+  ini=130;
   int dist;
   long time;
  
    
-  if (Serial.available())
+  while(Serial.available())
   {
     ser=Serial.read();
   switch(ser)
   {
-    case 1:
+    case '1':
     digitalWrite(G1, HIGH);
     digitalWrite(R2,HIGH);
     digitalWrite(R3,HIGH);
@@ -83,7 +83,7 @@ void loop()
     }
     break;
 
-    case 2:
+    case '2':
     digitalWrite(G2, HIGH);
     digitalWrite(R1,HIGH);
     digitalWrite(R3,HIGH);
@@ -114,7 +114,7 @@ void loop()
     }
     break;
 
-    case 3:
+    case '3':
     digitalWrite(G3, HIGH);
     digitalWrite(R2,HIGH);
     digitalWrite(R1,HIGH);
@@ -145,7 +145,7 @@ void loop()
     }
     break;
 
-    case 4:
+    case '4':
     digitalWrite(G4, HIGH);
     digitalWrite(R2,HIGH);
     digitalWrite(R3,HIGH);
@@ -164,7 +164,7 @@ void loop()
    Serial.print(dist);
    Serial.print("\n");
 
-    if (dist<ini-50)
+   if (dist<ini-50)
     {
       digitalWrite(R4, HIGH);
       digitalWrite(G4, LOW);
